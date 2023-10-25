@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home Page</title>
+    <style>
+        /* Add your CSS styles here */
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 15px;
+        }
+        a:-webkit-any-link {
+            color: #007BFF;
+            cursor: pointer;
+            text-decoration: underline;
+        }
+        .add-user-form {
+            margin-top: 20px;
+        }
+        .add-user-input {
+            padding: 5px;
+            width: 200px;
+        }
+        .add-user-button {
+            padding: 5px 10px;
+            background-color: #007BFF;
+            color: white;
+            border: none;
+            cursor: pointer;
+        }
+        .user-list {
+            margin-top: 20px;
+            list-style-type: none;
+            padding: 0;
+        }
+        .user-item {
+            margin-bottom: 10px;
+            background-color: #f4f4f4;
+            border: 1px solid #ccc;
+            padding: 10px;
+            border-radius: 5px;
+        }
+        .user-item strong {
+            font-size: 18px;
+            color: #007BFF;
+        }
+        h1 {
+            background-color: #007BFF;
+            color: white;
+            padding: 20px;
+            text-align: center;
+            font-size: 28px;
+            margin: 0;
+        }
+    </style>
+</head>
+<body>
+    <h1>Welcome to the Flask Social media Clone</h1>
+    <h2>Users:</h2>
+    
+    <!-- Add User Form -->
+    <form class="add-user-form" method="POST" action="{{ url_for('create_user') }}">
+        <input class="add-user-input" type="text" id="username" name="username" placeholder="Enter username" required>
+        <button class="add-user-button" type="submit">Add User</button>
+    </form>
+    
+    <!-- List of Users -->
+    <ul class="user-list">
+        {% for user in users %}
+            <li class="user-item">
+                <strong><a href="{{ url_for('user_posts', user_id=user.id) }}">{{ user.username }}</a></strong>
+            </li>
+        {% endfor %}
+    </ul>
+</body>
+</html>

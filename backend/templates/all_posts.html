@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>All Posts</title>
+    <style>
+        /* Add your CSS styles here */
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 15px;
+        }
+        h1 {
+            background-color: #007BFF;
+            color: white;
+            padding: 20px;
+            text-align: center;
+            font-size: 28px;
+            margin: 0;
+        }
+        ul {
+            list-style-type: none;
+            padding: 0;
+        }
+        li {
+            margin-bottom: 20px;
+            padding: 10px;
+            background-color: #f9f9f9;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+        li strong {
+            display: block;
+            font-size: 20px;
+            margin-bottom: 10px;
+            color: #007BFF; /* Highlight the post title */
+        }
+    </style>
+</head>
+<body>
+    <h1>All Posts</h1>
+    <h2>Posts:</h2>
+    <ul>
+        {% for post in all_posts %}
+            <li>
+                <strong>{{ post.title }}</strong><br>
+                {{ post.content }}
+            </li>
+        {% endfor %}
+    </ul>
+</body>
+</html>
